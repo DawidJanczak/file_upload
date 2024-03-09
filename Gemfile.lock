@@ -152,6 +152,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack
+  activejob
   activerecord
   activestorage
   activesupport
