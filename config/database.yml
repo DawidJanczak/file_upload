@@ -22,12 +22,13 @@ default: &default
 development:
   <<: *default
   database: file_upload_development
+  host: db
+  username: file_upload
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: file_upload
 
   # The password associated with the PostgreSQL role (username).
   #password:

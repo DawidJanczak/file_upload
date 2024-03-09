@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:16.2
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=file_upload
+      - POSTGRES_DB=file_upload_development
+  web:
+    build: .
+    command: ./bin/web_startup.sh
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=development
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/rails
