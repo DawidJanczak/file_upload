@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     p params
     user.attachments.attach(params.dig(:user, :attachment))
     if user.save
-      flash[:info] = user.attachments.last.url(expires_in: 10.seconds)
+      flash[:info] = user.attachments.last.url(expires_in: 10.minutes)
     else
       flash[:error] = 'Failed to upload file'
     end
