@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include ActiveStorage::SetCurrent
+
   def edit
     user = User.first_or_create
     render 'edit', locals: { user: }
@@ -9,7 +11,7 @@ class UsersController < ApplicationController
     p params
     user.attachments.attach(params.dig(:user, :attachment))
     if user.save
-      flash[:notice] = 'Flie uploaded'
+      flash[:info] = user.attachments.last.url(expires_in: 10.seconds)
     else
       flash[:error] = 'Failed to upload file'
     end

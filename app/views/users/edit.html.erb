@@ -1,8 +1,12 @@
 <h1>Add attachment</h1>
-<% flash.each do |_, msg| %>
-  <%= content_tag(:div, msg) %>
-<% end %>
 <%= form_with(model: user) do |f| %>
   <%= f.file_field :attachment %>
   <%= f.submit 'Upload' %>
+<% end %>
+
+<%= content_tag(:div, flash[:error]) %>
+<% if flash[:info] %>
+  <%= content_tag(:div, style: "padding-top: 20px") do %>
+    Success! Your file is available under <%= link_to('this url', flash[:info]) %>
+  <% end %>
 <% end %>
