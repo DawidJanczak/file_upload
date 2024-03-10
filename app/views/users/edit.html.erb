@@ -1,0 +1,8 @@
+<h1>Add attachment</h1>
+<% flash.each do |_, msg| %>
+  <%= content_tag(:div, msg) %>
+<% end %>
+<%= form_with(model: user) do |f| %>
+  <%= f.file_field :attachment %>
+  <%= f.submit 'Upload' %>
+<% end %>
